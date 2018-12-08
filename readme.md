@@ -11,11 +11,11 @@ const s = safe.stringify({});
 ```
 
 
-### For use with arrays:
+### For use with more complex deeply-nested objects with arrays:
 
 ```js
 import * as safe from '@oresoftware/safe-stringify';
-const s = safe.stringifyDeep({});
+const s = safe.stringifyDeep([{}]);
 
 ```
 
