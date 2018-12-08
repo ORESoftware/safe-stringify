@@ -1,6 +1,6 @@
 {
   "name": "@oresoftware/safe-stringify",
-  "version": "0.0.1001",
+  "version": "0.0.1002",
   "description": "Safely stringify objects with recursive references.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
