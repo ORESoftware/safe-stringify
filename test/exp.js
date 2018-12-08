@@ -1,18 +1,9 @@
 
-
-const x = [1,2,3];
-x.foo = 5;
-
-// console.log(JSON.stringify(v));
-//
-// console.log(Object.keys(v));
-
-
-// console.log(JSON.stringify(Array.from(new Set(v))));
+const safe = require('@oresoftware/safe-stringify');
 
 const v = {foo:'bar'};
-console.log(JSON.stringify([v,v,v]));
-
+v.mmm = {zoom:2};
+v.mmm.x = v;
 
 const safeStringify = function(o){
   const cache = [];
@@ -37,3 +28,5 @@ const safeStringify = function(o){
 
 
 console.log(safeStringify([v,v,v]));
+console.log(safe.stringify([v,v,v]));
+console.log(safe.stringifyDeep([v,v,v]));

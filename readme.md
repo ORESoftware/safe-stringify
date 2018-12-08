@@ -1,7 +1,16 @@
 
 ### ORESoftware / Safe Stringify
 
-### For most objects
+
+### Installation:
+
+>
+>```bash
+> $ npm i -S '@oresoftware/safe-stringify'
+>```
+>
+
+### For most objects (this is more performant)
 
 ```js
 
@@ -19,7 +28,7 @@ const s = safe.stringifyDeep([{}]);
 
 ```
 
-For example the following works with stringifyDeep but not stringify:
+For example the following works with `stringifyDeep` but not `stringify`:
 
 ```js
 
