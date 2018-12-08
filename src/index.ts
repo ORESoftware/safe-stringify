@@ -27,49 +27,42 @@ export const stringify = (v: object | boolean | number): string => {
   });
 };
 
-
-
 const parentSym = Symbol('parent');
 const cacheSym = Symbol('cache');
 
 const copyInner = (parent: any, key: string, val: any, copyParent: any) => {
   
   if (!(val && typeof val === 'object')) {
-    if (copyParent) {
       return copyParent[key] = val;
-    }
-    return;
   }
   
   const cache = copyParent[cacheSym];
   
-  if (cache && cache.has(val)) {
-    return copyParent[key] = JSON.parse(JSON.stringify(cache.get(val)));
+  if (cache.has(val)) {
+    try {
+      return copyParent[key] = JSON.parse(JSON.stringify(cache.get(val)));
+    }
+    catch (err) {
+      return copyParent[key] = null;
+    }
   }
   
   const copyVal: any = Array.isArray(val) ? [] : {};
   copyVal[parentSym] = copyParent;
   copyParent[key] = copyVal;
   
+  // console.log({cache});
+  cache.set(val, copyVal);
+  copyVal[cacheSym] = new Map(Array.from(cache));
   
-  if (cache) {
-    // console.log({cache});
-    cache.set(val, copyVal);
-    copyVal[cacheSym] = new Map(Array.from(cache));
-  }
-  else {
-    copyVal[cacheSym] = new Map();
-  }
+  let keys: any = null;
   
-  let keys : any = null;
-  
-  if(Array.isArray(val)){
+  if (Array.isArray(val)) {
     keys = val.keys();
   }
-  else{
+  else {
     keys = Object.keys(val);
   }
-  
   
   for (const k of keys) {
     copyInner(val, k, val[k], copyVal);
@@ -77,30 +70,32 @@ const copyInner = (parent: any, key: string, val: any, copyParent: any) => {
   
 };
 
-
 const copyOuter = (val: any) => {
   
-  if(!(val && typeof val === 'object')){
+  if (!(val && typeof val === 'object')) {
     return val;
   }
   
-  let copy: any = null, keys : any = null;
+  let copy: any = null, keys: any = null;
   
-  if(Array.isArray(val)){
-    copy = []; keys = val.keys();
+  if (Array.isArray(val)) {
+    copy = [];
+    keys = val.keys();
   }
-  else{
-    copy = {}; keys = Object.keys(val);
+  else {
+    copy = {};
+    keys = Object.keys(val);
   }
   
-  for(const k of keys){
+  copy[cacheSym] = new Map();
+  
+  for (const k of keys) {
     copyInner(val, k, val[k], copy);
   }
   
   return copy;
   
 };
-
 
 export const stringifyDeep = (v: object | boolean | number): string => {
   return JSON.stringify(copyOuter(v));

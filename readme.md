@@ -22,6 +22,11 @@ const s = safe.stringify({});
 
 ### For use with more complex deeply-nested objects with arrays:
 
+
+Note: stringifyDeep is *not* production ready, please don't use it yet, 
+without improving it and making sure it works for you.
+
+
 ```js
 import * as safe from '@oresoftware/safe-stringify';
 const s = safe.stringifyDeep([{}]);
