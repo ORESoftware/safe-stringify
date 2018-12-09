@@ -50,3 +50,38 @@ const mmm = safe.stringifyDeep([v,v,v]);
 console.log(mmm);
 
 ```
+
+
+### Using Map and Set, etc
+
+This library does not treat Map and Set or other classes as special. To serialize a Map or Set instance, 
+you might do:
+
+```js
+
+
+class HasMapAndSet {
+  
+  constructor(){
+    this.map = new Map([['one',1], ['two',2]]);
+    this.set = new Set([1,2,3]);
+  }
+   
+  toJSON(){  // use this to transform Map and Set to {} or []
+    return {
+      map: Array.from(this.map),
+      set: Array.from(this.set)
+    }
+  }
+  
+}
+
+
+console.log(
+  JSON.stringify(
+    new HasMapAndSet()
+  )
+);
+
+
+```

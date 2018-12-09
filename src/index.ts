@@ -38,6 +38,13 @@ const copyInner = (parent: any, key: string, val: any, copyParent: any) => {
   
   const cache = copyParent[cacheSym];
   
+  try{
+    val = val.toJSON();
+  }
+  catch(err){
+    // ignore
+  }
+  
   if (cache.has(val)) {
     try {
       return copyParent[key] = JSON.parse(JSON.stringify(cache.get(val)));
@@ -47,13 +54,20 @@ const copyInner = (parent: any, key: string, val: any, copyParent: any) => {
     }
   }
   
+  if(val === parent.__proto__){
+    return;
+  }
+  
+  if(val === Object.getPrototypeOf(parent)){
+    return;
+  }
+  
   const copyVal: any = Array.isArray(val) ? [] : {};
   copyVal[parentSym] = copyParent;
   copyParent[key] = copyVal;
   
-  // console.log({cache});
   cache.set(val, copyVal);
-  copyVal[cacheSym] = new Map(Array.from(cache));
+  copyVal[cacheSym] = new Map(cache);
   
   let keys: any = null;
   
