@@ -23,6 +23,9 @@ v.zzz = v;
 v.foo = 5;
 v.dog = 3;
 
-const mmm = safe.stringifyDeep([v,v,v]);
+const xxx = safe.stringify({bop: [{top:[v,v,v,[v,v,v]]}]});
+const mmm = safe.stringifyDeep({bop:[{top:[v,v,v,[v,v,v]]}]});
+
+console.log(xxx);
 console.log(mmm);
 // console.log(safe.stringify(mmm));

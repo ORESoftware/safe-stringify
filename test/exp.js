@@ -10,6 +10,7 @@ class HasMapAndSet {
   }
    
   toJSON(){
+    
     return {
       map: Array.from(this.map),
       set: Array.from(this.set)
