@@ -1,4 +1,7 @@
 
+
+const safe = require('../dist');
+
 class HasMapAndSet {
   
   constructor(){
@@ -18,3 +21,5 @@ class HasMapAndSet {
 
 
 console.log(JSON.stringify(new HasMapAndSet()));
+console.log(safe.stringify(new HasMapAndSet()));
+console.log(safe.stringifyDeep(new HasMapAndSet()));

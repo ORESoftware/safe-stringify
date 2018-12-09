@@ -92,6 +92,13 @@ const copyOuter = (val: any) => {
   
   let copy: any = null, keys: any = null;
   
+  try{
+    val = val.toJSON();
+  }
+  catch(err){
+    // ignore
+  }
+  
   if (Array.isArray(val)) {
     copy = [];
     keys = val.keys();
