@@ -33,16 +33,13 @@ const cacheSym = Symbol('cache');
 const copyInner = (parent: any, key: string, val: any, copyParent: any) => {
   
   if (!(val && typeof val === 'object')) {
-      return copyParent[key] = val;
+    return copyParent[key] = val;
   }
   
   const cache = copyParent[cacheSym];
   
-  try{
+  if (typeof val['toJSON'] === 'function') {
     val = val.toJSON();
-  }
-  catch(err){
-    // ignore
   }
   
   if (cache.has(val)) {
@@ -54,11 +51,11 @@ const copyInner = (parent: any, key: string, val: any, copyParent: any) => {
     }
   }
   
-  if(val === parent.__proto__){
+  if (val === parent.__proto__) {
     return;
   }
   
-  if(val === Object.getPrototypeOf(parent)){
+  if (val === Object.getPrototypeOf(parent)) {
     return;
   }
   
@@ -92,11 +89,8 @@ const copyOuter = (val: any) => {
   
   let copy: any = null, keys: any = null;
   
-  try{
+  if (typeof val['toJSON'] === 'function') {
     val = val.toJSON();
-  }
-  catch(err){
-    // ignore
   }
   
   if (Array.isArray(val)) {
