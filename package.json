@@ -1,10 +1,10 @@
 {
   "name": "@oresoftware/safe-stringify",
-  "version": "0.0.1006",
+  "version": "0.0.107",
   "description": "Safely stringify objects with recursive references.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "typings": "dist/index.d.ts",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "typings": "dist/main.d.ts",
   "scripts": {
     "test": "node test/simple.js",
     "postinstall": "./assets/postinstall.sh"
@@ -27,7 +27,6 @@
   "homepage": "https://github.com/ORESoftware/typescript-library-skeleton#readme",
   "dependencies": {},
   "devDependencies": {
-    "@types/core-js": "^0.9.46",
-    "@types/node": "^9.6.2"
+    "@types/node": "^12.7.4"
   }
 }

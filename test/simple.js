@@ -9,7 +9,7 @@ const EE  = require('events');
 const strm = require('stream');
 
 
-const safe = require('../dist');
+const safe = require('../dist/main.js');
 
 // const v = [{dog:'bark'}];
 // v.z = '5';
