@@ -23,7 +23,7 @@ fi
 
 install_realpath(){
   curl_url='https://raw.githubusercontent.com/oresoftware/realpath/master/assets/install.sh';
-  curl  -H 'Cache-Control: no-cache' --silent -o- "$curl_url" | bash || {
+  curl  -H 'Cache-Control: no-cache' --silent -o- "$curl_url" | sh || {
      echo "Could not install realpath on your system.";
      exit 1;
   }
