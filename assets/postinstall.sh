@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-set -e;
+set -eo pipefail;
 
 if [ "$skip_postinstall" = "yes" ]; then
     echo "skipping postinstall routine.";
@@ -31,13 +31,17 @@ install_realpath(){
 
 realpath_path="$HOME/.oresoftware/bin/realpath";
 
-
 if [ ! -f "$realpath_path" ]; then
     install_realpath
     exit 0;
 fi
 
-modified_secs="$(date -r "$realpath_path" +%s)"
+if command -v gdate > /dev/null; then
+  modified_secs="$(gdate -r "$realpath_path" +%s)"
+else
+  modified_secs="$(date -r "$realpath_path" +%s || echo '100')"  # if date -r is not defined, then just use a low integer
+fi
+
 current_secs="$(date +%s)"
 diff="$(expr "$current_secs" - "$modified_secs")"
 
