@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-set -eo pipefail;
+set -e;
 
 if [ "$skip_postinstall" = "yes" ]; then
     echo "skipping postinstall routine.";

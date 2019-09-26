@@ -10,6 +10,7 @@ coverage
 build/Release
 src
 docs
+scripts
 .tscmultiwatch
 .docker.r2g
 .circleci
@@ -21,13 +22,13 @@ docs
 .gitignore
 .npmignore
 .dockerignore
-.travis.yml
+
 suman.conf.js
-npm-link-up.json
-.npm-link-up.json
+.nlu.json
 
 ### matching
 *.log
+*.yml
 Dockerfile*
 *.md
 *.tgz
