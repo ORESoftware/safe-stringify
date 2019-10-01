@@ -36,21 +36,24 @@ const mapper = (cache: Set<any>, key: any, val: any): any => {
       if (val instanceof Buffer) {
         return {
           type: 'Buffer',
-          val: Array.from(<Buffer>val).map((v, i) => mapper(cache, i, v))
+          val: Array.from(<Buffer>val)
+                    .map((v, i) => mapper(cache, i, v))
         }
       }
       
       if (val instanceof Map) {
         return {
           type: 'Map',
-          val: Array.from(<Map<any, any>>val).map((v, i) => mapper(cache, i, v))
+          val: Array.from(<Map<any, any>>val)
+                    .map((v, i) => mapper(cache, i, v))
         }
       }
       
       if (val instanceof Set) {
         return {
           type: 'Set',
-          val: Array.from(<Set<any>>val).map((v, i) => mapper(cache, i, v))
+          val: Array.from(<Set<any>>val)
+                    .map((v, i) => mapper(cache, i, v))
         }
       }
       
@@ -61,8 +64,9 @@ const mapper = (cache: Set<any>, key: any, val: any): any => {
         }
       }
       
-      if(Array.isArray(val)){
-        return (<Array<any>>val).map((v, i) => mapper(cache, i, v))
+      if (Array.isArray(val)) {
+        return (<Array<any>>val)
+          .map((v, i) => mapper(cache, i, v))
       }
       
       // Circular reference found, discard key
