@@ -1,0 +1,3 @@
+fixture-token: r2g-phase-t
+package: @oresoftware/safe-stringify
+expected-export: r2gSmokeTest

@@ -28,5 +28,8 @@
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^12.7.4"
+  },
+  "r2g": {
+    "test": "node .r2g/tests/phase-contract.cjs --phase-z"
   }
 }
