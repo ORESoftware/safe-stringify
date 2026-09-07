@@ -1,0 +1,32 @@
+name: distribution contract
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: distribution-contract-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  npm-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Verify shell syntax
+        run: |
+          bash -n scripts/check-distribution-contract.sh
+          bash -n scripts/tests/test-distribution-contract.sh
+      - name: Run distribution policy regressions
+        run: bash scripts/tests/test-distribution-contract.sh
+      - name: Verify npm-only distribution boundary
+        run: bash scripts/check-distribution-contract.sh
