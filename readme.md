@@ -85,3 +85,9 @@ console.log(
 );
 
 ```
+
+## Distribution
+
+This package is distributed through npm. It does not publish or support a container image.
+
+See `docs/distribution.md` for the fail-closed distribution boundary and the review gates required before that classification may change.
