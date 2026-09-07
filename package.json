@@ -7,24 +7,26 @@
   "typings": "dist/main.d.ts",
   "scripts": {
     "test": "node test/simple.js",
+    "check:distribution": "bash scripts/check-distribution-contract.sh",
+    "test:distribution": "bash scripts/tests/test-distribution-contract.sh",
     "postinstall": "./assets/postinstall.sh"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ORESoftware/typescript-library-skeleton.git"
+    "url": "git+https://github.com/ORESoftware/safe-stringify.git"
   },
   "keywords": [
     "typescript",
-    "library",
-    "skeleton",
-    "scaffold"
+    "safe-stringify",
+    "circular-reference",
+    "json"
   ],
-  "author": "TODO Yo.Mama",
+  "author": "Alexander Mills",
   "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
-    "url": "https://github.com/ORESoftware/typescript-library-skeleton/issues"
+    "url": "https://github.com/ORESoftware/safe-stringify/issues"
   },
-  "homepage": "https://github.com/ORESoftware/typescript-library-skeleton#readme",
+  "homepage": "https://github.com/ORESoftware/safe-stringify#readme",
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^12.7.4"
