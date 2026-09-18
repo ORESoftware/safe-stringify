@@ -1,0 +1,17 @@
+# GENERATED from Dockerfile (sha256:df32a49f0d297883) by ores-gha-workflows/scripts/render-dkf.mjs — target linux/arm64. Do not edit; edit Dockerfile and re-render.
+FROM --platform=linux/arm64 node:10
+ARG TARGETARCH
+
+RUN apt-get update && apt-get install -y sudo
+RUN npm set unsafe-perm true
+RUN npm install -g @oresoftware/r2g
+
+#RUN echo $(whoami)
+#RUN mkdir -p /root/repo
+#WORKDIR /root/repo
+#COPY . .
+#
+#RUN r2g run
+
+
+

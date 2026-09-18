@@ -18,3 +18,7 @@ package-lock.json
 ### inverse
 !dist/.gitkeep
 !dist/README.md
+tmp
+temp
+tmp/worktrees
+temp/worktrees
